@@ -1,0 +1,33 @@
+name: Continous Deployment
+
+on:
+ push:
+  branches:
+    - main
+
+permission:
+ contents: read
+ pages: write
+ id-token: write
+
+jobs:
+  deploy:
+
+   environment:
+    name: github-page
+   runs-on: ubuntu-latest
+
+   steps:
+     - uses: actions/checkout@v4
+
+     - uses: actions/configure-pages@v5
+
+     - uses: actions/upload-pages-artifact@v3
+       with:
+        path:
+
+     - name: Verify JavaScript File Exists
+       run: test -f script.js
+
+     - name: CI Succesful
+       run: echo "Website Passed Validation"   
